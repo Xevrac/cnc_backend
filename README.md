@@ -4,4 +4,4 @@
 Goal is to fully emulate Command and Conquer™ backend and have functioning client.
 
 Codebase originate from <a href="https://github.com/Tratos/BF4Backend/tree/main">this repo</a>.
-> Credit: Eisbaer, WarrentyVoider
+> Credit: Eisbaer, Warranty Voider
