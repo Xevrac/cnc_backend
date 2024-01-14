@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1AA2DF60-D199-4C55-BBDD-0549E99C8949}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>BF4Emu</RootNamespace>
-    <AssemblyName>BF4Emu</AssemblyName>
+    <RootNamespace>CNCEmu</RootNamespace>
+    <AssemblyName>CNCEmu</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -112,6 +112,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

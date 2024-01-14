@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace BF4Emu
+namespace CNCEmu
 {
     public enum LogPriority
     {

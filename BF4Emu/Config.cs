@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Threading;
 
 
-namespace BF4Emu
+namespace CNCEmu
 {
     public static class Config
     {
@@ -24,16 +24,17 @@ namespace BF4Emu
 
         public static void Credits()
         {
-            Logger.Log("-- BF4 Emulator by Eisbaer --");
+            Logger.Log("-- CNC Emulator by Xevrac --");
             Logger.Log("-----------------------------------------------");
             Logger.Log("-- Credits: --");
             Logger.Log("-----------------------------------------------");
-            Logger.Log("The1Domo for his Initial Work...");
-            Logger.Log("Warranty Voider for his Framework and his Help.");
-            Logger.Log("Manu157 for his Help.");
-            Logger.Log("BSHTornado for his Help.");
-            Logger.Log("Zlofenix for his Help.");
-            Logger.Log("Andersson799 for his Help.");
+            Logger.Log("The1Domo for initial work..");
+            Logger.Log("Warranty Voider for their framework.");
+            Logger.Log("Manu157 for their framework.");
+            Logger.Log("Zlofenix for their Help.");
+            Logger.Log("Aim4Kill for their Help.");
+            Logger.Log("Eisbaer for their Help.");
+            Logger.Log("Nemo for their help.");
             Logger.Log("-----------------------------------------------");
         }
 

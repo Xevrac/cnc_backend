@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1525
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BF4Emu", "BF4Emu\BF4Emu.csproj", "{1AA2DF60-D199-4C55-BBDD-0549E99C8949}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNCEmu", "BF4Emu\CNCEmu.csproj", "{1AA2DF60-D199-4C55-BBDD-0549E99C8949}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeLibWV", "BlazeLibWV\BlazeLibWV.csproj", "{7CE2BF11-C78D-49AB-A37A-538D2D0E0418}"
 EndProject
