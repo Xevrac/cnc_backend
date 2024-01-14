@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1AA2DF60-D199-4C55-BBDD-0549E99C8949}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BF4Emu</RootNamespace>
+    <AssemblyName>BF4Emu</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BackendLog.cs" />
+    <Compile Include="BlazeServer.cs" />
+    <Compile Include="CleanPackets.cs" />
+    <Compile Include="Commands\NotifyClientGameSetupCommand.cs" />
+    <Compile Include="Commands\NotifyGamePlayerStateChangeCommand.cs" />
+    <Compile Include="Commands\NotifyGameSettingsChangeCommand.cs" />
+    <Compile Include="Commands\NotifyGameStateChangeCommand.cs" />
+    <Compile Include="Commands\NotifyPlatformHostInitializedCommand.cs" />
+    <Compile Include="Commands\NotifyPlayerJoinCompletedCommand.cs" />
+    <Compile Include="Commands\NotifyPlayerJoiningCommand.cs" />
+    <Compile Include="Commands\NotifyPlayerRemovedCommand.cs" />
+    <Compile Include="Commands\NotifyServerGameSetupCommand.cs" />
+    <Compile Include="Commands\NotifyUserAddedCommand.cs" />
+    <Compile Include="Commands\NotifyUserRemovedCommand.cs" />
+    <Compile Include="Commands\NotifyUserStatusCommand.cs" />
+    <Compile Include="Commands\UserAddedCommand.cs" />
+    <Compile Include="Commands\UserAuthenticatedCommand.cs" />
+    <Compile Include="Commands\UserSessionExtendedDataUpdateNotificationCommand.cs" />
+    <Compile Include="Commands\UserUpdatedCommand.cs" />
+    <Compile Include="Components\AccountsComponent.cs" />
+    <Compile Include="Components\AssociationListsComponent.cs" />
+    <Compile Include="Components\AuthenticationComponent.cs" />
+    <Compile Include="Components\BlazeHelper.cs" />
+    <Compile Include="Components\GameManagerComponent.cs" />
+    <Compile Include="Components\InventoryComponent.cs" />
+    <Compile Include="Components\RSPComponent.cs" />
+    <Compile Include="Components\StatsComponent.cs" />
+    <Compile Include="Components\UserSessionsComponent.cs" />
+    <Compile Include="Components\UtilComponent.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameInfo.cs" />
+    <Compile Include="GenFiles.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="PlayerInfo.cs" />
+    <Compile Include="Profile.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProviderInfo.cs" />
+    <Compile Include="RedirectorServer.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BlazeLibWV\BlazeLibWV.csproj">
+      <Project>{7ce2bf11-c78d-49ab-a37a-538d2d0e0418}</Project>
+      <Name>BlazeLibWV</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
