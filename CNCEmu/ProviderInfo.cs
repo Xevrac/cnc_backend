@@ -9,7 +9,7 @@ namespace CNCEmu
     public static class ProviderInfo
     {
         public static string backendIP = "0.0.0.0";
-        public static string serverIP = "192.168.178.20";
+        public static string serverIP = "10.20.102.99";
 
         public static string ams_psa = "qos-prod-bio-dub-common-common.gos.ea.com";
         public static int ams_psp = 17502;
