@@ -29,7 +29,7 @@ namespace CNCEmu
                         p.name = parts[1].Trim();
                         break;
                     case "id":
-                        p.id = Convert.ToInt32(parts[1].Trim());
+                        p.id = Convert.ToInt64(parts[1].Trim()); // Use Convert.ToInt64 to handle long ID
                         break;
                 }
             }
