@@ -104,7 +104,7 @@ namespace CNCEmu
             Result.Add(Blaze.TdfList.Create("CIDS", 0, t2.Count, t2));
             t = new List<string>();
             List<string> t3 = new List<string>();
-            Helper.ConvertDoubleStringList("{associationListSkipInitialSet ; 1} {blazeServerClientId ; GOS-BlazeServer-BF4-PC} {bytevaultHostname ; bytevault.gameservices.ea.com} {bytevaultPort ; 42210} {bytevaultSecure ; true} {capsStringValidationUri ; client-strings.xboxlive.com} {connIdleTimeout ; 90s} {defaultRequestTimeout ; 60s} {identityDisplayUri ; console2/welcome} {identityRedirectUri ; http://127.0.0.1/success} {nucleusConnect ; https://accounts.ea.com} {nucleusProxy ; https://gateway.ea.com} {pingPeriod ; 30s} {userManagerMaxCachedUsers ; 0} {voipHeadsetUpdateRate ; 1000} {xblTokenUrn ; accounts.ea.com} {xlspConnectionIdleTimeout ; 300}", out t, out t3);
+            Helper.ConvertDoubleStringList("{associationListSkipInitialSet ; 1} {blazeServerClientId ; GOS-BlazeServer-CNC-PC} {bytevaultHostname ; bytevault.gameservices.ea.com} {bytevaultPort ; 42210} {bytevaultSecure ; true} {capsStringValidationUri ; client-strings.xboxlive.com} {connIdleTimeout ; 90s} {defaultRequestTimeout ; 60s} {identityDisplayUri ; console2/welcome} {identityRedirectUri ; http://127.0.0.1/success} {nucleusConnect ; https://accounts.ea.com} {nucleusProxy ; https://gateway.ea.com} {pingPeriod ; 30s} {userManagerMaxCachedUsers ; 0} {voipHeadsetUpdateRate ; 1000} {xblTokenUrn ; accounts.ea.com} {xlspConnectionIdleTimeout ; 300}", out t, out t3);
             Blaze.TdfDoubleList conf2 = Blaze.TdfDoubleList.Create("CONF", 1, 1, t, t3, t.Count);
             List<Blaze.Tdf> t4 = new List<Blaze.Tdf>();
             t4.Add(conf2);
