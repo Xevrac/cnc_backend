@@ -20,7 +20,7 @@ namespace CNCEmu
         public static readonly object _sync = new object();
         public static bool _exit;
         public static bool _isRunning = false;
-        public static bool useSSL = true;
+        public static bool useSSL = false;
         public static RichTextBox box = null;
         public static TcpListener lRedirector = null;
         public static int targetPort = 10071;
@@ -70,7 +70,7 @@ namespace CNCEmu
                     if (useSSL)
                     {
                         SslStream sslStream = new SslStream(client.GetStream(), false);
-                        sslStream.AuthenticateAsServer(cert, false, SslProtocols.Ssl3, false);
+                        sslStream.AuthenticateAsServer(cert, false, SslProtocols.Default | SslProtocols.None | SslProtocols.Ssl2 | SslProtocols.Ssl3 | SslProtocols.Tls | SslProtocols.Tls11 | SslProtocols.Tls12, false);
                         byte[] data = Helper.ReadContentSSL(sslStream);
                         MemoryStream m = new MemoryStream();
                         m.Write(data, 0, data.Length);
