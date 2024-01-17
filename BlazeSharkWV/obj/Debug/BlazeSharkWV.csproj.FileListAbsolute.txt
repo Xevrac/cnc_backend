@@ -1,0 +1,13 @@
+C:\Development\cnc_backend\BlazeSharkWV\obj\Debug\BlazeSharkWV.csproj.AssemblyReference.cache
+C:\Development\cnc_backend\BlazeSharkWV\bin\Debug\BlazeSharkWV.exe.config
+C:\Development\cnc_backend\BlazeSharkWV\bin\Debug\BlazeSharkWV.exe
+C:\Development\cnc_backend\BlazeSharkWV\bin\Debug\BlazeSharkWV.pdb
+C:\Development\cnc_backend\BlazeSharkWV\bin\Debug\BlazeLibWV.dll
+C:\Development\cnc_backend\BlazeSharkWV\bin\Debug\BlazeLibWV.pdb
+C:\Development\cnc_backend\BlazeSharkWV\obj\Debug\BlazeSharkWV.Form1.resources
+C:\Development\cnc_backend\BlazeSharkWV\obj\Debug\BlazeSharkWV.Properties.Resources.resources
+C:\Development\cnc_backend\BlazeSharkWV\obj\Debug\BlazeSharkWV.csproj.GenerateResource.cache
+C:\Development\cnc_backend\BlazeSharkWV\obj\Debug\BlazeSharkWV.csproj.CoreCompileInputs.cache
+C:\Development\cnc_backend\BlazeSharkWV\obj\Debug\BlazeSharkWV.csproj.CopyComplete
+C:\Development\cnc_backend\BlazeSharkWV\obj\Debug\BlazeSharkWV.exe
+C:\Development\cnc_backend\BlazeSharkWV\obj\Debug\BlazeSharkWV.pdb
