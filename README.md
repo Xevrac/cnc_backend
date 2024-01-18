@@ -11,7 +11,9 @@ Open solution with VS2022 and compile build. Run `CNCEmu.exe`.
 > .NET Framework 4.6.1 is required
 
 # Media
-Latest update is on this <a href="https://www.youtube.com/watch?v=Jk6fB4ePam8">YouTube video</a>.
+Latest updates can be followed on my <a href="https://www.youtube.com/playlist?list=PLfYG_Q01lhem8qrQB7T5HWXg18_CR5noX">YouTube channel</a>.
+
+Latest video: <a href="https://youtu.be/OD8WR6CHm1o">PoC #5</a>
 
 <img src="https://i.ibb.co/55c5B1M/Screenshot-2024-01-17-132344.png">
 
