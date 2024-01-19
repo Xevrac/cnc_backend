@@ -35,7 +35,7 @@ Latest video: <a href="https://youtu.be/OD8WR6CHm1o">PoC #5</a>
   * User Profile Unlocks - ❌
   * User Profile Stats - ❌
     
-* Web
+* Web - 🏗️
   * **Temporary**: External webserver - ✅
   * Internal webserver - ❌
   * ShellUI - 🏗️
