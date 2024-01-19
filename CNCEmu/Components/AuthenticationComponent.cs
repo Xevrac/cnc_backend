@@ -25,37 +25,6 @@ namespace CNCEmu
 
         public static void ExpressLogin(Blaze.Packet p, PlayerInfo pi, NetworkStream ns)
         {
-            if (!pi.isServer)
-            {
-                List<Blaze.Tdf> input = Blaze.ReadPacketContent(p);
-                Blaze.TdfString TOKN = (Blaze.TdfString)input[3];
-                long id = Convert.ToInt32(TOKN.Value);
-                foreach (Profile profile in Profiles.profiles)
-                    if (profile.id == id)
-                    {
-                        pi.profile = profile;
-                        break;
-                    }
-                if (pi.profile == null)
-                {
-                    Logger.Log("[CLNT] #" + pi.userId + " Could not find player profile for token 0x" + id.ToString("X") + "!");
-                    pi.userId = 0;
-                    return;
-                }
-                else
-                {
-                    for (int i = 0; i < BlazeServer.allClients.Count; i++)
-                        if (BlazeServer.allClients[i].userId == id)
-                        {
-                            BlazeServer.allClients.RemoveAt(i);
-                            i--;
-                        }
-                    pi.userId = id;
-                    Logger.Log("[CLNT] New ID #" + pi.userId + " Client Playername = \"" + pi.profile.name + "\"");
-                }
-
-            }
-
             uint t = Blaze.GetUnixTimeStamp();
 
             // Overall Result
@@ -72,7 +41,7 @@ namespace CNCEmu
             SESS.Add(Blaze.TdfString.Create("MAIL", "cnc.server.pc@ea.com")); // Email Address
             SESS.Add(Blaze.TdfInteger.Create("UID\0", pi.userId)); // User ID
             SESS.Add(Blaze.TdfInteger.Create("FRSC", 0)); // Unknown
-            SESS.Add(Blaze.TdfInteger.Create("FRST", 0)); // Unknown
+            SESS.Add(Blaze.TdfInteger.Create("FRST", 0)); // First Login - Need to Verify
             SESS.Add(Blaze.TdfInteger.Create("LLOG", 1403663841)); // Last Login Time
 
             Result.Add(Blaze.TdfStruct.Create("SESS", SESS)); // Encapsulate for SESS
