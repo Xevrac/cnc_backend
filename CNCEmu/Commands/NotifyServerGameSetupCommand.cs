@@ -15,10 +15,10 @@ namespace CNCEmu
             List<Blaze.Tdf> input = Blaze.ReadPacketContent(p);
 
             uint t = Blaze.GetUnixTimeStamp();
-            pi.game.GNAM = ((Blaze.TdfString)input[5]).Value;
-            pi.game.GSET = ((Blaze.TdfInteger)input[6]).Value;
-            pi.game.VOIP = ((Blaze.TdfInteger)input[24]).Value;
-            pi.game.VSTR = ((Blaze.TdfString)input[25]).Value;
+            pi.game.GNAM = ((Blaze.TdfString)input[4]).Value;
+            pi.game.GSET = ((Blaze.TdfInteger)input[5]).Value;
+            pi.game.VOIP = ((Blaze.TdfInteger)input[22]).Value;
+            pi.game.VSTR = ((Blaze.TdfString)input[23]).Value;
             List<Blaze.Tdf> result = new List<Blaze.Tdf>();
             List<Blaze.Tdf> GAME = new List<Blaze.Tdf>();
             GAME.Add(Blaze.TdfList.Create("ADMN", 0, 1, new List<long>(new long[] { pi.userId })));
@@ -59,7 +59,7 @@ namespace CNCEmu
             ee0.Add(Blaze.TdfInteger.Create("EXID", pi.userId));
             ee0.Add(Blaze.TdfInteger.Create("GID\0", pi.game.id));
             ee0.Add(Blaze.TdfInteger.Create("LOC\0", pi.loc));
-            ee0.Add(Blaze.TdfString.Create("NAME", pi.profile.name));
+            ee0.Add(Blaze.TdfString.Create("NAME", "Xevrac"));
             ee0.Add(Blaze.TdfInteger.Create("PID\0", pi.userId));
             ee0.Add(BlazeHelper.CreateNETFieldUnion(pi, "PNET"));
             ee0.Add(Blaze.TdfInteger.Create("SID\0", pi.slot));
