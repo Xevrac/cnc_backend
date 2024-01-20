@@ -58,6 +58,9 @@ namespace CNCEmu
                 case 0x29:
                     SetGameModRegister(p, pi, ns);
                     break;
+                case 0x19:
+                    resetDedicatedServer(p, pi, ns);
+                    break;
                 default:
                     Logger.Log("[CLNT] #" + pi.userId + " Component: [" + p.Component + "] # Command: " + p.Command + " [at] " + " [GAMEMANAGER] " + " not found.", System.Drawing.Color.Red);
                     break;
@@ -316,6 +319,36 @@ namespace CNCEmu
             ns.Flush();
         }
 
+        public static void resetDedicatedServer(Blaze.Packet p, PlayerInfo pi, NetworkStream ns)
+        {
+            pi.stat = 4;
+            pi.slot = pi.game.getNextSlot();
+            pi.game.setNextSlot((int)pi.userId);
+            pi.game.id = 1;
+            pi.game.isRunning = true;
+            pi.game.GSTA = 7;
+            pi.game.players[0] = pi;
+
+            List<Blaze.Tdf> result = new List<Blaze.Tdf>();
+            result.Add(Blaze.TdfInteger.Create("GID\0", pi.game.id));
+            result.Add(Blaze.TdfInteger.Create("GSTA", pi.game.GSTA));
+            byte[] buff = Blaze.CreatePacket(p.Component, p.Command, 0, 0x1000, p.ID, result);
+            ns.Write(buff, 0, buff.Length);
+
+            ////Send NotifyGameStateChange Packet
+            //List<Blaze.Tdf> Result2 = NotifyGameStateChangeCommand.NotifyGameStateChange(pi);
+            //byte[] buff2 = Blaze.CreatePacket(4, 0x64, 0, 0x2000, p.ID, Result2);
+            //Logger.LogPacket("NotifyGameStateChange", Convert.ToInt32(pi.userId), buff2); //TestLog
+            //ns.Write(buff2, 0, buff2.Length);
+
+            //Send NotifyServerGameSetup Packet
+            List<Blaze.Tdf> Result3 = NotifyServerGameSetupCommand.NotifyServerGameSetup(p, pi);
+            byte[] buff3 = Blaze.CreatePacket(p.Component, 0x14, 0, 0x2000, p.ID, Result3);
+            Logger.LogPacket("NotifyServerGameSetup", Convert.ToInt32(pi.userId), buff3); //TestLog
+            ns.Write(buff3, 0, buff3.Length);
+
+            ns.Flush();
+        }
 
         public static void StartMatchmaking(Blaze.Packet p, PlayerInfo pi, NetworkStream ns)
         {

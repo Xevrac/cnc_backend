@@ -83,8 +83,8 @@ namespace CNCEmu
             pi.timeout = new System.Diagnostics.Stopwatch();
             pi.timeout.Start();
             Log("[CLNT] #" + pi.userId + " Handler started");
-            try
-            {
+            //try
+            //{
                 while (!GetExit())
                 {
                     byte[] data = Helper.ReadContentTCP(ns);
@@ -94,11 +94,12 @@ namespace CNCEmu
                     if (pi.timeout.ElapsedMilliseconds > 5000 * 60)
                         throw new Exception("Client timed out!");
                 }
-            }
-            catch (Exception ex)
-            {
-                LogError("CLNT", ex, "Handler " + pi.userId);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    LogError("CLNT", ex, "Handler " + pi.userId);
+            //    throw new Exception(ex.StackTrace);
+            //}
             client.Close();
             Log("[CLNT] #" + pi.userId + " Client disconnected", System.Drawing.Color.Orange);
             BlazeServer.allClients.Remove(pi);

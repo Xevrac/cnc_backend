@@ -82,12 +82,13 @@ namespace CNCEmu
             Blaze.TdfInteger TYPE = (Blaze.TdfInteger)CDAT.Values[3];
             pi.isServer = TYPE.Value != 0;
 
-            if (pi.isServer)  //Make as a Server !
-            {
+            //if (pi.isServer)  //Make as a Server !
+            //{
                 pi.game = new GameInfo();
-                pi.profile = Profiles.Create("bf4.server.pc@ea.com", 999);
-                pi.userId = 999;
-            }
+                //pi.profile = Profiles.Create("Xevrac", 1);
+                //pi.userId = 1;
+            //}
+
             Blaze.TdfStruct CINF = (Blaze.TdfStruct)input[1];
             Blaze.TdfString CVER = (Blaze.TdfString)CINF.Values[5];
             Blaze.TdfInteger LOC = (Blaze.TdfInteger)CINF.Values[8];
