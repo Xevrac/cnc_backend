@@ -40,3 +40,13 @@ Latest video: <a href="https://youtu.be/OD8WR6CHm1o">PoC #5</a>
   * **Temporary**: External webserver - ✅
   * Internal webserver - ❌
   * ShellUI - 🏗️
+
+* Client State - 🏗️
+  > * No playable functions yet
+  > * Basic menu for development purposes
+  * Landing Page - ❌
+  * Development Page - 🏗️
+  * Game Creation - 🏗️
+  * Level Generation - ❌
+  * Player presence - ✅
+  * Can load in game - ❌
