@@ -31,18 +31,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.serverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startWebServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startBlazeServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startRedirectorServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playerProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logLevelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onlyHighToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.highAndMediumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateProviderIDdatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.playerProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -90,9 +93,10 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.serverToolStripMenuItem,
+            this.setupToolStripMenuItem,
             this.logLevelToolStripMenuItem,
             this.toolsToolStripMenuItem,
-            this.setupToolStripMenuItem});
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1020, 24);
@@ -102,12 +106,20 @@
             // serverToolStripMenuItem
             // 
             this.serverToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startWebServerToolStripMenuItem,
             this.startBlazeServerToolStripMenuItem,
             this.startRedirectorServerToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
             this.serverToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.serverToolStripMenuItem.Text = "Server";
+            // 
+            // startWebServerToolStripMenuItem
+            // 
+            this.startWebServerToolStripMenuItem.Enabled = false;
+            this.startWebServerToolStripMenuItem.Name = "startWebServerToolStripMenuItem";
+            this.startWebServerToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.startWebServerToolStripMenuItem.Text = "Start Web Server";
             // 
             // startBlazeServerToolStripMenuItem
             // 
@@ -129,6 +141,29 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // setupToolStripMenuItem
+            // 
+            this.setupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editConfigToolStripMenuItem,
+            this.playerProfileToolStripMenuItem});
+            this.setupToolStripMenuItem.Name = "setupToolStripMenuItem";
+            this.setupToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.setupToolStripMenuItem.Text = "Setup";
+            // 
+            // editConfigToolStripMenuItem
+            // 
+            this.editConfigToolStripMenuItem.Name = "editConfigToolStripMenuItem";
+            this.editConfigToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.editConfigToolStripMenuItem.Text = "Edit Config";
+            this.editConfigToolStripMenuItem.Click += new System.EventHandler(this.editConfigToolStripMenuItem_Click);
+            // 
+            // playerProfileToolStripMenuItem
+            // 
+            this.playerProfileToolStripMenuItem.Name = "playerProfileToolStripMenuItem";
+            this.playerProfileToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.playerProfileToolStripMenuItem.Text = "Player Profile";
+            this.playerProfileToolStripMenuItem.Click += new System.EventHandler(this.playerProfileToolStripMenuItem_Click);
             // 
             // logLevelToolStripMenuItem
             // 
@@ -176,28 +211,20 @@
             this.generateProviderIDdatToolStripMenuItem.Text = "Generate ProviderID.dat ...";
             this.generateProviderIDdatToolStripMenuItem.Click += new System.EventHandler(this.generateProviderIDdatToolStripMenuItem_Click);
             // 
-            // setupToolStripMenuItem
+            // helpToolStripMenuItem
             // 
-            this.setupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editConfigToolStripMenuItem,
-            this.playerProfileToolStripMenuItem});
-            this.setupToolStripMenuItem.Name = "setupToolStripMenuItem";
-            this.setupToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.setupToolStripMenuItem.Text = "Setup";
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
             // 
-            // editConfigToolStripMenuItem
+            // aboutToolStripMenuItem
             // 
-            this.editConfigToolStripMenuItem.Name = "editConfigToolStripMenuItem";
-            this.editConfigToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.editConfigToolStripMenuItem.Text = "Edit Config";
-            this.editConfigToolStripMenuItem.Click += new System.EventHandler(this.editConfigToolStripMenuItem_Click);
-            // 
-            // playerProfileToolStripMenuItem
-            // 
-            this.playerProfileToolStripMenuItem.Name = "playerProfileToolStripMenuItem";
-            this.playerProfileToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.playerProfileToolStripMenuItem.Text = "Player Profile";
-            this.playerProfileToolStripMenuItem.Click += new System.EventHandler(this.playerProfileToolStripMenuItem_Click);
+            this.aboutToolStripMenuItem.Enabled = false;
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Text = "About";
             // 
             // statusStrip1
             // 
@@ -547,6 +574,9 @@
         private System.Windows.Forms.ToolStripMenuItem editConfigToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem playerProfileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateProviderIDdatToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startWebServerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 
