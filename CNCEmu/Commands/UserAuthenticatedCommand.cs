@@ -15,13 +15,13 @@ namespace CNCEmu
             List<Blaze.Tdf> Result = new List<Blaze.Tdf>();
             Result.Add(Blaze.TdfInteger.Create("ALOC", 1403663841));
             Result.Add(Blaze.TdfInteger.Create("BUID", pi.userId));
-            Result.Add(Blaze.TdfString.Create("DSNM", pi.profile.name)); 
+            Result.Add(Blaze.TdfString.Create("DSNM", "Xevrac")); 
             Result.Add(Blaze.TdfInteger.Create("FRSC", 0)); 
             Result.Add(Blaze.TdfInteger.Create("FRST", 0)); 
-            Result.Add(Blaze.TdfString.Create("KEY", "SessionKey_1337"));
+            Result.Add(Blaze.TdfString.Create("KEY", "SESSKY"));
             Result.Add(Blaze.TdfInteger.Create("LAST", 1403663841)); 
             Result.Add(Blaze.TdfInteger.Create("LLOG", 1403663841));
-            Result.Add(Blaze.TdfString.Create("MAIL", "bf4.server.pc@ea.com"));
+            Result.Add(Blaze.TdfString.Create("MAIL", "cnc.server.pc@ea.com"));
             Result.Add(Blaze.TdfInteger.Create("PID", pi.userId));
             Result.Add(Blaze.TdfInteger.Create("PLAT", 4));
             Result.Add(Blaze.TdfInteger.Create("UID", pi.userId));

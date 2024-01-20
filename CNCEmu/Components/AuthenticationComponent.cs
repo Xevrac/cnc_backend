@@ -15,7 +15,16 @@ namespace CNCEmu
             switch (p.Command)
             {
                 case 0x28:
-                    ExpressLogin(p, pi, ns);
+                    Login(p, pi, ns);
+                    break;
+                case 0x64:
+                    ListPersonas(p, pi, ns);
+                    break;
+                case 0x6E:
+                    LoginPersona(p, pi, ns);
+                    break;
+                case 0x78:
+                    LogoutPersona(p, pi, ns);
                     break;
                 default:
                     Logger.Log("[CLNT] #" + pi.userId + " Component: [" + p.Component + "] # Command: " + p.Command + " [at] " + " [AUTHENTICATIONCOMP] " + " not found.", System.Drawing.Color.Red);
@@ -23,46 +32,111 @@ namespace CNCEmu
             }
         }
 
-        public static void ExpressLogin(Blaze.Packet p, PlayerInfo pi, NetworkStream ns)
+        public static void Login(Blaze.Packet p, PlayerInfo pi, NetworkStream ns)
         {
-            uint t = Blaze.GetUnixTimeStamp();
 
-            // Overall Result
             List<Blaze.Tdf> Result = new List<Blaze.Tdf>();
-            Result.Add(Blaze.TdfInteger.Create("AGUP", 0)); // Can Age Up
-            Result.Add(Blaze.TdfInteger.Create("ANON", 0)); // Is Anonymous
-            Result.Add(Blaze.TdfInteger.Create("NTOS", 0)); // Needs Legal Docs (TOS)
-            Result.Add(Blaze.TdfString.Create("PCTK", "PLYRTK")); // PC Login Token
 
-            // Session is collection of data related to user session
-            List<Blaze.Tdf> SESS = new List<Blaze.Tdf>();
-            SESS.Add(Blaze.TdfInteger.Create("BUID", pi.userId)); // Blaze UserID
-            SESS.Add(Blaze.TdfString.Create("KEY", "SESSKY")); // Session Key
-            SESS.Add(Blaze.TdfString.Create("MAIL", "cnc.server.pc@ea.com")); // Email Address
-            SESS.Add(Blaze.TdfInteger.Create("UID\0", pi.userId)); // User ID
-            SESS.Add(Blaze.TdfInteger.Create("FRSC", 0)); // Unknown
-            SESS.Add(Blaze.TdfInteger.Create("FRST", 0)); // First Login - Need to Verify
-            SESS.Add(Blaze.TdfInteger.Create("LLOG", 1403663841)); // Last Login Time
+            List<Blaze.Tdf> List = new List<Blaze.Tdf>();
 
-            Result.Add(Blaze.TdfStruct.Create("SESS", SESS)); // Encapsulate for SESS
+            Result.Add(Blaze.TdfInteger.Create("ANON", 0));
+            Result.Add(Blaze.TdfInteger.Create("NTOS", 0));
+            Result.Add(Blaze.TdfString.Create("PCTK", ""));
 
-            // Player Details contains information specific to player
-            List<Blaze.Tdf> PDTL = new List<Blaze.Tdf>();
-            PDTL.Add(Blaze.TdfString.Create("DSNM", pi.profile.name)); // Display Name
-            PDTL.Add(Blaze.TdfInteger.Create("LAST", t)); // Last Login Time
-            PDTL.Add(Blaze.TdfInteger.Create("PID\0", pi.userId)); // Player ID
-            PDTL.Add(Blaze.TdfInteger.Create("PLAT", 4)); // #1 XBL2 | #2 PS3 | #3 WII | #4 PC
-            PDTL.Add(Blaze.TdfInteger.Create("STAS", 2)); // Unknown
-            PDTL.Add(Blaze.TdfInteger.Create("XREF", 0)); // Cross Reference - ? - Unknown
+            List<Blaze.TdfStruct> playerentries = new List<Blaze.TdfStruct>();
+            List<Blaze.Tdf> PlayerEntry = new List<Blaze.Tdf>();
+            PlayerEntry.Add(Blaze.TdfString.Create("DSNM", "Xevrac"));
+            PlayerEntry.Add(Blaze.TdfInteger.Create("LAST", 0));
+            PlayerEntry.Add(Blaze.TdfInteger.Create("PID\0", pi.userId));
+            PlayerEntry.Add(Blaze.TdfInteger.Create("STAS", 2));
+            PlayerEntry.Add(Blaze.TdfInteger.Create("XREF", 0));
+            PlayerEntry.Add(Blaze.TdfInteger.Create("XTYP", 0));
+            playerentries.Add(Blaze.TdfStruct.Create("0", PlayerEntry));
+            Result.Add(Blaze.TdfList.Create("PLST", 3, 1, playerentries));
 
-            Result.Add(Blaze.TdfStruct.Create("PDTL", PDTL)); // Encapsulate for PDTL
-
-            Result.Add(Blaze.TdfInteger.Create("SPAM", 0)); // Unknown
-            Result.Add(Blaze.TdfInteger.Create("UNDR", 0)); // Unknown
+            Result.Add(Blaze.TdfString.Create("SKEY", "123456"));
+            Result.Add(Blaze.TdfInteger.Create("SPAM", 0));
+            Result.Add(Blaze.TdfInteger.Create("UID\0", pi.userId));
+            Result.Add(Blaze.TdfInteger.Create("UNDR", 0));
 
             byte[] buff = Blaze.CreatePacket(p.Component, p.Command, 0, 0x1000, p.ID, Result);
-            Logger.LogPacket("ExpressLog", Convert.ToInt32(pi.userId), buff); //TestLog
+            Logger.LogPacket("Log", Convert.ToInt32(pi.userId), buff); //TestLog
+
             ns.Write(buff, 0, buff.Length);
+
+            ns.Flush();
+
+            //uint t = Blaze.GetUnixTimeStamp();
+
+            //// Overall Result
+            //List<Blaze.Tdf> Result = new List<Blaze.Tdf>();
+            //Result.Add(Blaze.TdfInteger.Create("AGUP", 0)); // Can Age Up
+            //Result.Add(Blaze.TdfString.Create("LDHT", ""));
+            //Result.Add(Blaze.TdfInteger.Create("NTOS", 0));
+            //Result.Add(Blaze.TdfString.Create("PCTK", ""));
+
+            //List<Blaze.TdfStruct> playerentries = new List<Blaze.TdfStruct>();
+            //List<Blaze.Tdf> PlayerEntry = new List<Blaze.Tdf>();
+            //PlayerEntry.Add(Blaze.TdfString.Create("DSNM", "Xevrac"));
+            //PlayerEntry.Add(Blaze.TdfInteger.Create("LAST", t));
+            //PlayerEntry.Add(Blaze.TdfInteger.Create("PID\0", pi.userId));
+            //PlayerEntry.Add(Blaze.TdfInteger.Create("PLAT", 4));
+            //PlayerEntry.Add(Blaze.TdfInteger.Create("STAS", 2));
+            //PlayerEntry.Add(Blaze.TdfInteger.Create("XREF", 0));
+            //playerentries.Add(Blaze.TdfStruct.Create("0", PlayerEntry));
+            //Result.Add(Blaze.TdfList.Create("PLST", 3, 1, playerentries));
+
+            //Result.Add(Blaze.TdfString.Create("PRIV", ""));
+            //Result.Add(Blaze.TdfString.Create("SKEY", "123456"));
+            //Result.Add(Blaze.TdfInteger.Create("SPAM", 0));
+            //Result.Add(Blaze.TdfString.Create("THST", ""));
+            //Result.Add(Blaze.TdfString.Create("TSUI", ""));
+            //Result.Add(Blaze.TdfString.Create("TURI", ""));
+            //Result.Add(Blaze.TdfInteger.Create("UID\0", pi.userId));
+
+            //// Session is a collection of data related to the user session
+            //List<Blaze.Tdf> SESS = new List<Blaze.Tdf>();
+            //SESS.Add(Blaze.TdfInteger.Create("BUID", pi.userId)); // Blaze UserID
+            //SESS.Add(Blaze.TdfString.Create("KEY", "SESSKY")); // Session Key
+            //SESS.Add(Blaze.TdfString.Create("MAIL", "cnc.server.pc@ea.com")); // Email Address
+            //SESS.Add(Blaze.TdfInteger.Create("UID\0", pi.userId)); // User ID
+            //SESS.Add(Blaze.TdfInteger.Create("FRSC", 0)); // Unknown
+            //SESS.Add(Blaze.TdfInteger.Create("FRST", 0)); // First Login - Need to Verify
+            //SESS.Add(Blaze.TdfInteger.Create("LLOG", 1403663841)); // Last Login Time
+
+            //Result.Add(Blaze.TdfStruct.Create("SESS", SESS)); // Encapsulate for SESS
+
+            //byte[] buff = Blaze.CreatePacket(p.Component, p.Command, 0, 0x1000, p.ID, Result);
+            //Logger.LogPacket("Log", Convert.ToInt32(pi.userId), buff); //TestLog
+            //ns.Write(buff, 0, buff.Length);
+
+            //ns.Flush();
+        }
+
+        public static void LoginPersona(Blaze.Packet p, PlayerInfo pi, NetworkStream ns)
+        {
+            uint t = Blaze.GetUnixTimeStamp();
+            List<Blaze.Tdf> SESS = new List<Blaze.Tdf>();
+            SESS.Add(Blaze.TdfInteger.Create("BUID", pi.userId));
+            SESS.Add(Blaze.TdfInteger.Create("FRST", 0));
+            SESS.Add(Blaze.TdfString.Create("KEY\0", "some_client_key"));
+            SESS.Add(Blaze.TdfInteger.Create("LLOG", t));
+            SESS.Add(Blaze.TdfString.Create("MAIL", ""));
+            List<Blaze.Tdf> PDTL = new List<Blaze.Tdf>();
+            PDTL.Add(Blaze.TdfString.Create("DSNM", "Xevrac"));
+            PDTL.Add(Blaze.TdfInteger.Create("LAST", t));
+            PDTL.Add(Blaze.TdfInteger.Create("PID\0", pi.userId));
+            PDTL.Add(Blaze.TdfInteger.Create("STAS", 0));
+            PDTL.Add(Blaze.TdfInteger.Create("XREF", 0));
+            PDTL.Add(Blaze.TdfInteger.Create("XTYP", 0));
+            SESS.Add(Blaze.TdfStruct.Create("PDTL", PDTL));
+            SESS.Add(Blaze.TdfInteger.Create("UID\0", pi.userId));
+            byte[] buff = Blaze.CreatePacket(p.Component, p.Command, 0, 0x1000, p.ID, SESS);
+            ns.Write(buff, 0, buff.Length);
+            ns.Flush();
+
+            AsyncUserSessions.NotifyUserAdded(pi, p, pi, ns);
+            AsyncUserSessions.NotifyUserStatus(pi, p, pi, ns);
 
             // Send UserAuthenticated Packet
             List<Blaze.Tdf> Result2 = UserAuthenticatedCommand.UserAuthenticated(pi);
@@ -81,11 +155,37 @@ namespace CNCEmu
             byte[] buff4 = Blaze.CreatePacket(0x7802, 2, 0, 0x2000, p.ID, Result4);
             Logger.LogPacket("UserAdded", Convert.ToInt32(pi.userId), buff4); //TestLog
             ns.Write(buff4, 0, buff4.Length);
+        }
 
+        public static void LogoutPersona(Blaze.Packet p, PlayerInfo pi, NetworkStream ns)
+        {
+            List<Blaze.Tdf> result = new List<Blaze.Tdf>();
+            byte[] buff = Blaze.CreatePacket(p.Component, p.Command, 0, 0x1000, p.ID, result);
+            ns.Write(buff, 0, buff.Length);
+            ns.Flush();
 
+            AsyncUserSessions.NotifyUserRemoved(pi, p, pi.userId, ns);
+            AsyncUserSessions.NotifyUserStatus(pi, p, pi, ns);
+        }
 
+        public static void ListPersonas(Blaze.Packet p, PlayerInfo pi, NetworkStream ns)
+        {
+            List<Blaze.Tdf> result = new List<Blaze.Tdf>();
+            List<Blaze.TdfStruct> entries = new List<Blaze.TdfStruct>();
+            List<Blaze.Tdf> e = new List<Blaze.Tdf>();
+            e.Add(Blaze.TdfString.Create("DSNM", "Xevrac"));
+            e.Add(Blaze.TdfInteger.Create("LAST", Blaze.GetUnixTimeStamp()));
+            e.Add(Blaze.TdfInteger.Create("PID\0", pi.profile.id));
+            e.Add(Blaze.TdfInteger.Create("STAS", 2));
+            e.Add(Blaze.TdfInteger.Create("XREF", 0));
+            e.Add(Blaze.TdfInteger.Create("XTYP", 0));
+            entries.Add(Blaze.TdfStruct.Create("0", e));
+            result.Add(Blaze.TdfList.Create("PINF", 3, 1, entries));
+            byte[] buff = Blaze.CreatePacket(p.Component, p.Command, 0, 0x1000, p.ID, result);
+            ns.Write(buff, 0, buff.Length);
             ns.Flush();
         }
+
     }
 }
 
@@ -167,7 +267,7 @@ namespace CNCEmu
 //                            }
 
 //                            pi.userId = id;
-//                            Logger.Log("[CLNT] New ID #" + pi.userId + " Client Playername = \"" + pi.profile.name + "\"");
+//                            Logger.Log("[CLNT] New ID #" + pi.userId + " Client Playername = \"" + "Xevrac" + "\"");
 //                        }
 //                    }
 //                    else
@@ -197,7 +297,7 @@ namespace CNCEmu
 //            Result.Add(Blaze.TdfString.Create("PCTK", ""));
 //            List<Blaze.TdfStruct> playerentries = new List<Blaze.TdfStruct>();
 //            List<Blaze.Tdf> PlayerEntry = new List<Blaze.Tdf>();
-//            PlayerEntry.Add(Blaze.TdfString.Create("DSNM", pi.profile.name));
+//            PlayerEntry.Add(Blaze.TdfString.Create("DSNM", "Xevrac"));
 //            PlayerEntry.Add(Blaze.TdfInteger.Create("LAST", t));
 //            PlayerEntry.Add(Blaze.TdfInteger.Create("PID\0", pi.userId));
 //            PlayerEntry.Add(Blaze.TdfInteger.Create("STAS", 2));
@@ -227,7 +327,7 @@ namespace CNCEmu
 //            SESS.Add(Blaze.TdfInteger.Create("LLOG", t));
 //            SESS.Add(Blaze.TdfString.Create("MAIL", ""));
 //            List<Blaze.Tdf> PDTL = new List<Blaze.Tdf>();
-//            PDTL.Add(Blaze.TdfString.Create("DSNM", pi.profile.name));
+//            PDTL.Add(Blaze.TdfString.Create("DSNM", "Xevrac"));
 //            PDTL.Add(Blaze.TdfInteger.Create("LAST", t));
 //            PDTL.Add(Blaze.TdfInteger.Create("PID\0", pi.userId));
 //            PDTL.Add(Blaze.TdfInteger.Create("STAS", 0));
@@ -259,7 +359,7 @@ namespace CNCEmu
 //            List<Blaze.Tdf> result = new List<Blaze.Tdf>();
 //            List<Blaze.TdfStruct> entries = new List<Blaze.TdfStruct>();
 //            List<Blaze.Tdf> e = new List<Blaze.Tdf>();
-//            e.Add(Blaze.TdfString.Create("DSNM", pi.profile.name));
+//            e.Add(Blaze.TdfString.Create("DSNM", "Xevrac"));
 //            e.Add(Blaze.TdfInteger.Create("LAST", Blaze.GetUnixTimeStamp()));
 //            e.Add(Blaze.TdfInteger.Create("PID\0", pi.profile.id));
 //            e.Add(Blaze.TdfInteger.Create("STAS", 2));
