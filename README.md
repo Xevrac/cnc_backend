@@ -30,8 +30,9 @@ Latest video: <a href="https://youtu.be/OD8WR6CHm1o">PoC #5</a>
 <hr>
 
 * Blaze - 🏗️
-  * Authentication Layer - 🏗️
-  * Game Manager Layer - ❌
+  * Authentication Layer - ✅
+     * Authenticate state is success, minor tweaking to packet handling may be required further testing needed.
+  * Game Manager Layer - 🏗️
   * User Profile Unlocks - ❌
   * User Profile Stats - ❌
     
