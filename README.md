@@ -16,7 +16,7 @@ Want to contribute? There is a [Docs](https://github.com/Xevrac/cnc_backend/wiki
 # Media
 Latest updates can be followed on my <a href="https://www.youtube.com/playlist?list=PLfYG_Q01lhem8qrQB7T5HWXg18_CR5noX">YouTube channel</a>.
 
-Latest video: <a href="https://youtu.be/OD8WR6CHm1o">PoC #5</a>
+Latest video: <a href="https://youtu.be/E0tTsIs9xps">PoC #6</a>
 
 <img src="https://i.ibb.co/55c5B1M/Screenshot-2024-01-17-132344.png">
 
