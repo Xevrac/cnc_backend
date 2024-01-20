@@ -10,6 +10,9 @@ Codebase originate from <a href="https://github.com/Tratos/BF4Backend/tree/main"
 Open solution with VS2022 and compile build. Run `CNCEmu.exe`.
 > .NET Framework 4.6.1 is required
 
+# Learn
+Want to contribute? There is a [Docs](https://github.com/Xevrac/cnc_backend/wiki) page where you can learn.
+
 # Media
 Latest updates can be followed on my <a href="https://www.youtube.com/playlist?list=PLfYG_Q01lhem8qrQB7T5HWXg18_CR5noX">YouTube channel</a>.
 
