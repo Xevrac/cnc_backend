@@ -55,6 +55,7 @@
             // 
             // toolStripTextBox1
             // 
+            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
             // 
@@ -109,8 +110,9 @@
             this.ClientSize = new System.Drawing.Size(514, 380);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.toolStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
-            this.Text = "Player Profile Editor";
+            this.Text = "Player Profile Tool";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
