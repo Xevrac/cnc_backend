@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNCEmu", "CNCEmu\CNCEmu.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeLibWV", "BlazeLibWV\BlazeLibWV.csproj", "{7CE2BF11-C78D-49AB-A37A-538D2D0E0418}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeSharkWV", "BlazeSharkWV\BlazeSharkWV.csproj", "{E774C256-9575-4229-A758-24BFA35EC03B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{7CE2BF11-C78D-49AB-A37A-538D2D0E0418}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CE2BF11-C78D-49AB-A37A-538D2D0E0418}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CE2BF11-C78D-49AB-A37A-538D2D0E0418}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E774C256-9575-4229-A758-24BFA35EC03B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E774C256-9575-4229-A758-24BFA35EC03B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E774C256-9575-4229-A758-24BFA35EC03B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E774C256-9575-4229-A758-24BFA35EC03B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

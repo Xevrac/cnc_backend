@@ -17,7 +17,5 @@ namespace CNCEmu
             Result.Add(Blaze.TdfInteger.Create("GSTA", pi.game.GSTA));
             return Result;
         }
-
-
     }
 }

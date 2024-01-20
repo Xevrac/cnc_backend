@@ -70,6 +70,9 @@
     <Compile Include="Commands\UserUpdatedCommand.cs" />
     <Compile Include="Components\AccountsComponent.cs" />
     <Compile Include="Components\AssociationListsComponent.cs" />
+    <Compile Include="Components\AsyncNotification\AsyncGameManager.cs" />
+    <Compile Include="Components\AsyncNotification\AsyncStats.cs" />
+    <Compile Include="Components\AsyncNotification\AsyncUserSessions.cs" />
     <Compile Include="Components\AuthenticationComponent.cs" />
     <Compile Include="Components\BlazeHelper.cs" />
     <Compile Include="Components\GameManagerComponent.cs" />
@@ -103,6 +106,7 @@
     <Compile Include="RedirectorServer.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
@@ -139,5 +143,6 @@
   <ItemGroup>
     <Content Include="blaze.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
