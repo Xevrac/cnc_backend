@@ -26,7 +26,7 @@ namespace CNCEmu
             GAME.Add(Blaze.TdfInteger.Create("GSET", srv.game.GSET));
             GAME.Add(Blaze.TdfInteger.Create("GSID", 1));
             GAME.Add(Blaze.TdfInteger.Create("GSTA", srv.game.GSTA));
-            GAME.Add(Blaze.TdfString.Create("GTYP", "AssaultStandard"));
+            GAME.Add(Blaze.TdfString.Create("GTYP", ""));
             GAME.Add(BlazeHelper.CreateNETField(srv, "HNET"));
             GAME.Add(Blaze.TdfInteger.Create("HSES", 13666));
             GAME.Add(Blaze.TdfInteger.Create("IGNO", 0));

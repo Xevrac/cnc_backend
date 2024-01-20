@@ -111,11 +111,12 @@ namespace CNCEmu
             t4.Add(conf2);
             Result.Add(Blaze.TdfStruct.Create("CONF", t4));
             Result.Add(Blaze.TdfString.Create("ESRC", "302123"));
-            Result.Add(Blaze.TdfString.Create("INST", "battlefield-4-pc"));
+            Result.Add(Blaze.TdfString.Create("INST", "rts-client-pc"));
             Result.Add(Blaze.TdfInteger.Create("MINR", 0));
             Result.Add(Blaze.TdfString.Create("NASP", "cem_ea_id"));
             Result.Add(Blaze.TdfString.Create("PILD", ""));
             Result.Add(Blaze.TdfString.Create("PLAT", "pc"));
+
 
             List<Blaze.Tdf> QOSS = new List<Blaze.Tdf>();
             List<Blaze.Tdf> BWPS = new List<Blaze.Tdf>();
