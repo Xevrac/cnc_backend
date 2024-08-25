@@ -67,16 +67,6 @@ namespace CNCEmu
             Application.Exit();
         }
 
-        private void startBlazeServerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!BlazeServer._exit) BlazeServer.Start();
-        }
-
-        private void startRedirectorServerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!RedirectorServer._exit) RedirectorServer.Start();
-        }
-
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (RedirectorServer._exit) RedirectorServer.Stop();
@@ -514,6 +504,26 @@ namespace CNCEmu
                         break;
                 }
             }
+        }
+
+        private void BtnStartBlazeServer_Click(object sender, EventArgs e)
+        {
+            if (!BlazeServer._exit) BlazeServer.Start();
+        }
+
+        private void BtnStartRedirectorServer_Click(object sender, EventArgs e)
+        {
+            if (!RedirectorServer._exit) RedirectorServer.Start();
+        }
+
+        private void SIHelp_Click(object sender, EventArgs e)
+        {
+            Utils.OpenUrl("https://github.com/Xevrac/cnc_backend/wiki");
+        }
+
+        private void SIAbout_Click(object sender, EventArgs e)
+        {
+            Utils.OpenUrl("https://github.com/Xevrac/cnc_backend/wiki/About");
         }
     }
 }
