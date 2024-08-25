@@ -1,17 +1,14 @@
-﻿using System;
-using System.IO;
+﻿using BlazeLibWV;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Net;
 using System.Net.Security;
 using System.Net.Sockets;
 using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using BlazeLibWV;
 
 namespace CNCEmu
 {
@@ -31,7 +28,7 @@ namespace CNCEmu
             SetExit(false);
             _isRunning = true;
             Log("Starting Redirector...");
-            new Thread(tRedirectorMain).Start();
+            new Thread(tRedirectorMain) { IsBackground = true }.Start();
             for (int i = 0; i < 10; i++)
             {
                 Thread.Sleep(10);

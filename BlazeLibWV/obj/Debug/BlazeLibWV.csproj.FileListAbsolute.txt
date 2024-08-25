@@ -1,6 +1,0 @@
-C:\Development\cnc_backend\BlazeLibWV\bin\Debug\BlazeLibWV.dll
-C:\Development\cnc_backend\BlazeLibWV\bin\Debug\BlazeLibWV.pdb
-C:\Development\cnc_backend\BlazeLibWV\obj\Debug\BlazeLibWV.csproj.AssemblyReference.cache
-C:\Development\cnc_backend\BlazeLibWV\obj\Debug\BlazeLibWV.csproj.CoreCompileInputs.cache
-C:\Development\cnc_backend\BlazeLibWV\obj\Debug\BlazeLibWV.dll
-C:\Development\cnc_backend\BlazeLibWV\obj\Debug\BlazeLibWV.pdb
