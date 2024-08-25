@@ -1,16 +1,12 @@
-﻿using System;
-using System.IO;
+﻿using BlazeLibWV;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Security;
-using System.Net.Sockets;
 using System.Drawing;
-using System.Text;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using BlazeLibWV;
 
 namespace CNCEmu
 {
@@ -29,7 +25,7 @@ namespace CNCEmu
             SetExit(false);
             _isRunning = true;
             Log("Starting Blaze...");
-            new Thread(tBlazeMain).Start();
+            new Thread(tBlazeMain) { IsBackground = true }.Start();
             idCounter = 1;
             for (int i = 0; i < 10; i++)
             {
@@ -60,7 +56,7 @@ namespace CNCEmu
                 while (!GetExit())
                 {
                     client = lBlaze.AcceptTcpClient();
-                    new Thread(tBlazeClientHandler).Start(client);
+                    new Thread(tBlazeClientHandler) { IsBackground = true }.Start(client);
                 }
             }
             catch (Exception ex)
