@@ -18,7 +18,11 @@ Latest updates can be followed on my <a href="https://www.youtube.com/playlist?l
 
 Latest video: <a href="https://youtu.be/E0tTsIs9xps">PoC #6</a>
 
-<img src="https://i.ibb.co/55c5B1M/Screenshot-2024-01-17-132344.png">
+![image](https://github.com/user-attachments/assets/6029b259-bd41-4d70-bf64-8b4601b2bfd5)
+
+![image](https://github.com/user-attachments/assets/ac055e97-cfb5-4eaa-b266-e527ae466a3d)
+
+![image](https://github.com/user-attachments/assets/fc118c93-4c70-4755-9a68-c5d6cb57bd37)
 
 # Tracker
 
