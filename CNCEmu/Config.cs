@@ -35,6 +35,7 @@ namespace CNCEmu
             Logger.Log("Aim4Kill for their Help.");
             Logger.Log("Eisbaer for their Help.");
             Logger.Log("Nemo for their Help.");
+            Logger.Log("Techno14 for their Help.");
             Logger.Log("-----------------------------------------------");
         }
 
