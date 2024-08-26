@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="blaze.ico" />
+    <None Include="Resources\external.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

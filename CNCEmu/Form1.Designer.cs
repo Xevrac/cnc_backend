@@ -2,15 +2,8 @@
 {
     partial class Form1
     {
-        /// <summary>
-        /// Erforderliche Designervariable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Verwendete Ressourcen bereinigen.
-        /// </summary>
-        /// <param name="disposing">True, wenn verwaltete Ressourcen gelöscht werden sollen; andernfalls False.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +15,6 @@
 
         #region Vom Windows Form-Designer generierter Code
 
-        /// <summary>
-        /// Erforderliche Methode für die Designerunterstützung.
-        /// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
-        /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
@@ -33,16 +22,16 @@
             this.serverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.playerProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playerProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateProviderIDdatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logLevelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onlyHighToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.highAndMediumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SIHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -74,7 +63,6 @@
             this.BtnStartRedirectorServer = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.BtnStartWebServer = new System.Windows.Forms.Button();
-            this.SIHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -97,12 +85,11 @@
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.serverToolStripMenuItem,
-            this.setupToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.SIHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(319, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(166, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -117,6 +104,7 @@
             // 
             // SIAbout
             // 
+            this.SIAbout.Image = global::CNCEmu.Properties.Resources.external;
             this.SIAbout.Name = "SIAbout";
             this.SIAbout.Size = new System.Drawing.Size(180, 22);
             this.SIAbout.Text = "About";
@@ -129,44 +117,37 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // setupToolStripMenuItem
-            // 
-            this.setupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editConfigToolStripMenuItem,
-            this.playerProfileToolStripMenuItem});
-            this.setupToolStripMenuItem.Name = "setupToolStripMenuItem";
-            this.setupToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.setupToolStripMenuItem.Text = "Setup";
-            // 
-            // editConfigToolStripMenuItem
-            // 
-            this.editConfigToolStripMenuItem.Name = "editConfigToolStripMenuItem";
-            this.editConfigToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editConfigToolStripMenuItem.Text = "Edit Config";
-            this.editConfigToolStripMenuItem.Click += new System.EventHandler(this.editConfigToolStripMenuItem_Click);
-            // 
-            // playerProfileToolStripMenuItem
-            // 
-            this.playerProfileToolStripMenuItem.Name = "playerProfileToolStripMenuItem";
-            this.playerProfileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.playerProfileToolStripMenuItem.Text = "Player Profile";
-            this.playerProfileToolStripMenuItem.Click += new System.EventHandler(this.playerProfileToolStripMenuItem_Click);
-            // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.playerProfileToolStripMenuItem,
+            this.editConfigToolStripMenuItem,
             this.toolsToolStripMenuItem,
             this.logLevelToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
+            // playerProfileToolStripMenuItem
+            // 
+            this.playerProfileToolStripMenuItem.Name = "playerProfileToolStripMenuItem";
+            this.playerProfileToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.playerProfileToolStripMenuItem.Text = "Player Profile";
+            this.playerProfileToolStripMenuItem.Click += new System.EventHandler(this.playerProfileToolStripMenuItem_Click);
+            // 
+            // editConfigToolStripMenuItem
+            // 
+            this.editConfigToolStripMenuItem.Name = "editConfigToolStripMenuItem";
+            this.editConfigToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.editConfigToolStripMenuItem.Text = "Edit Config";
+            this.editConfigToolStripMenuItem.Click += new System.EventHandler(this.editConfigToolStripMenuItem_Click);
+            // 
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.generateProviderIDdatToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // generateProviderIDdatToolStripMenuItem
@@ -183,7 +164,7 @@
             this.highAndMediumToolStripMenuItem,
             this.allToolStripMenuItem});
             this.logLevelToolStripMenuItem.Name = "logLevelToolStripMenuItem";
-            this.logLevelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logLevelToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.logLevelToolStripMenuItem.Text = "Log Level";
             // 
             // onlyHighToolStripMenuItem
@@ -206,6 +187,14 @@
             this.allToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.allToolStripMenuItem.Text = "All";
             this.allToolStripMenuItem.Click += new System.EventHandler(this.allToolStripMenuItem_Click);
+            // 
+            // SIHelp
+            // 
+            this.SIHelp.Image = global::CNCEmu.Properties.Resources.external;
+            this.SIHelp.Name = "SIHelp";
+            this.SIHelp.Size = new System.Drawing.Size(60, 20);
+            this.SIHelp.Text = "Help";
+            this.SIHelp.Click += new System.EventHandler(this.SIHelp_Click);
             // 
             // statusStrip1
             // 
@@ -261,7 +250,6 @@
             // 
             // toolStripTextBox1
             // 
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
             this.toolStripTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBox1_KeyUp);
@@ -407,7 +395,6 @@
             // 
             // toolStripTextBox2
             // 
-            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox2.Name = "toolStripTextBox2";
             this.toolStripTextBox2.Size = new System.Drawing.Size(100, 25);
             // 
@@ -433,7 +420,6 @@
             // 
             // toolStripTextBox3
             // 
-            this.toolStripTextBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox3.Name = "toolStripTextBox3";
             this.toolStripTextBox3.Size = new System.Drawing.Size(100, 25);
             // 
@@ -444,7 +430,6 @@
             // 
             // toolStripTextBox4
             // 
-            this.toolStripTextBox4.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox4.Name = "toolStripTextBox4";
             this.toolStripTextBox4.Size = new System.Drawing.Size(100, 25);
             // 
@@ -470,7 +455,6 @@
             // 
             // toolStripTextBox5
             // 
-            this.toolStripTextBox5.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox5.Name = "toolStripTextBox5";
             this.toolStripTextBox5.Size = new System.Drawing.Size(100, 25);
             // 
@@ -526,13 +510,6 @@
             this.BtnStartWebServer.TabIndex = 5;
             this.BtnStartWebServer.Text = "Frontend";
             this.BtnStartWebServer.UseVisualStyleBackColor = true;
-            // 
-            // SIHelp
-            // 
-            this.SIHelp.Name = "SIHelp";
-            this.SIHelp.Size = new System.Drawing.Size(44, 20);
-            this.SIHelp.Text = "Help";
-            this.SIHelp.Click += new System.EventHandler(this.SIHelp_Click);
             // 
             // Form1
             // 
@@ -590,7 +567,6 @@
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem setupToolStripMenuItem;
         private System.Windows.Forms.RichTextBox rtb1;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.SplitContainer splitContainer1;
