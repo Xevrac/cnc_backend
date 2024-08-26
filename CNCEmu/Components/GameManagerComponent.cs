@@ -61,6 +61,9 @@ namespace CNCEmu
                 case 0x19:
                     resetDedicatedServer(p, pi, ns);
                     break;
+                case 0x100:
+                    getGameListSnapshot(p, pi, ns);
+                    break;
                 default:
                     Logger.Log("[CLNT] #" + pi.userId + " Component: [" + p.Component + "] # Command: " + p.Command + " [at] " + " [GAMEMANAGER] " + " not found.", System.Drawing.Color.Red);
                     break;
@@ -349,6 +352,100 @@ namespace CNCEmu
 
             ns.Flush();
         }
+
+        // Work in progress implementation of getGameListSnapshot
+        // Ideal journey: getGameListSnapshot >> GetGameListResponse >> NotifyGameListUpdate >> destroyGameList 
+        public static void getGameListSnapshot(Blaze.Packet p, PlayerInfo pi, NetworkStream ns)
+        {
+            // Create the response TDF data
+            List<Blaze.Tdf> result = new List<Blaze.Tdf>();
+
+            // Add DNAM
+            result.Add(Blaze.TdfString.Create("DNAM", "default"));
+
+            // Create and add GLID structure
+            List<Blaze.Tdf> glidData = new List<Blaze.Tdf>
+            {
+                CreateEmptyStruct("AGAM"),
+                CreateEmptyStruct("APLR"),
+                CreateEmptyStruct("CUST"),
+                Blaze.TdfStruct.Create("DNF", new List<Blaze.Tdf> { 
+                    Blaze.TdfInteger.Create("DNF", 0) 
+                }),
+                Blaze.TdfStruct.Create("GEO", new List<Blaze.Tdf> { 
+                    Blaze.TdfString.Create("THLD", "") 
+                }),
+                Blaze.TdfStruct.Create("GNAM", new List<Blaze.Tdf> { 
+                    Blaze.TdfString.Create("SUBS", "") 
+                }),
+                Blaze.TdfStruct.Create("NAT", new List<Blaze.Tdf> { 
+                    Blaze.TdfString.Create("THLD", "") 
+                }),
+                Blaze.TdfStruct.Create("PPLR", new List<Blaze.Tdf>
+                {
+                    Blaze.TdfStruct.Create("PSET", new List<Blaze.Tdf> { 
+                        Blaze.TdfInteger.Create("PSET", 0) 
+                    }),
+                    Blaze.TdfInteger.Create("REQP", 0)
+                }),
+                CreateEmptyStruct("PSR"),
+                Blaze.TdfStruct.Create("RANK", new List<Blaze.Tdf>
+                {
+                    Blaze.TdfString.Create("THLD", ""),
+                    Blaze.TdfInteger.Create("VALU", 0)
+                }),
+                Blaze.TdfStruct.Create("RSZR", new List<Blaze.Tdf>
+                {
+                    Blaze.TdfInteger.Create("PCAP", 0),
+                    Blaze.TdfInteger.Create("PMIN", 0)
+                }),
+                Blaze.TdfStruct.Create("SIZE", new List<Blaze.Tdf>
+                {
+                    Blaze.TdfInteger.Create("ISSG", 0),
+                    Blaze.TdfInteger.Create("PCAP", 0),
+                    Blaze.TdfInteger.Create("PCNT", 0),
+                    Blaze.TdfInteger.Create("PMIN", 0),
+                    Blaze.TdfString.Create("THLD", "")
+                }),
+                Blaze.TdfStruct.Create("TEAM", new List<Blaze.Tdf>
+                {
+                    Blaze.TdfInteger.Create("PCAP", 0),
+                    Blaze.TdfInteger.Create("PCNT", 0),
+                    Blaze.TdfInteger.Create("PMIN", 0),
+                    Blaze.TdfInteger.Create("SDIF", 0),
+                    Blaze.TdfString.Create("THLD", ""),
+                    Blaze.TdfInteger.Create("TID", 0)
+                }),
+                Blaze.TdfStruct.Create("VIAB", new List<Blaze.Tdf> { Blaze.TdfString.Create("THLD", "") }),
+                Blaze.TdfStruct.Create("VIRT", new List<Blaze.Tdf>
+                {
+                    Blaze.TdfString.Create("THLD", ""),
+                    Blaze.TdfInteger.Create("VALU", 0)
+                })
+            };
+
+            result.Add(Blaze.TdfStruct.Create("GLID", glidData));
+
+            // Add other TDF values
+            result.Add(Blaze.TdfString.Create("GVER", "cncprod150805"));
+            result.Add(Blaze.TdfInteger.Create("IGNO", 0));
+            result.Add(Blaze.TdfInteger.Create("LCAP", 0));
+            result.Add(Blaze.TdfInteger.Create("NOJM", 0));
+
+            // Create the response packet
+            byte[] buff = Blaze.CreatePacket(p.Component, p.Command, 0, 0x1000, p.ID, result);
+            Logger.LogPacket("getGameListSnapshot", Convert.ToInt32(pi.userId), buff);
+            ns.Write(buff, 0, buff.Length);
+            ns.Flush();
+        }
+
+        // Helper method create empty TDF struct
+        // Might not need - To revisit
+        private static Blaze.TdfStruct CreateEmptyStruct(string name)
+        {
+            return Blaze.TdfStruct.Create(name, new List<Blaze.Tdf>());
+        }
+
 
         public static void StartMatchmaking(Blaze.Packet p, PlayerInfo pi, NetworkStream ns)
         {
