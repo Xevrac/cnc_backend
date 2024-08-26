@@ -324,6 +324,11 @@ namespace CNCEmu
 
         public static void resetDedicatedServer(Blaze.Packet p, PlayerInfo pi, NetworkStream ns)
         {
+            if (pi.game == null)
+            {
+                pi.game = new GameInfo();
+            }
+
             pi.stat = 4;
             pi.slot = pi.game.getNextSlot();
             pi.game.setNextSlot((int)pi.userId);
