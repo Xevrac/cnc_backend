@@ -20,7 +20,7 @@ namespace CNCEmu
         public static bool useSSL = false;
         public static RichTextBox box = null;
         public static TcpListener lRedirector = null;
-        public static int targetPort = 10071;
+        public static int targetPort = 3659;
         public static string redi = "redirector.pfx";
 
         public static void Start()

@@ -48,8 +48,8 @@ namespace CNCEmu
             {
                 Log("[MAIN] Blaze starting...");
                 Profiles.Refresh();
-                lBlaze = new TcpListener(IPAddress.Parse(ProviderInfo.backendIP), 10071);
-                Log("[MAIN] Blaze bound to " + ProviderInfo.backendIP + ":10071");
+                lBlaze = new TcpListener(IPAddress.Parse(ProviderInfo.backendIP), 3659);
+                Log("[MAIN] Blaze bound to " + ProviderInfo.backendIP + ":3659");
                 lBlaze.Start();
                 Log("[MAIN] Blaze listening...");
                 TcpClient client;
