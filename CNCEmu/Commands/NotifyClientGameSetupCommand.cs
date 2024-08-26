@@ -66,7 +66,6 @@ namespace CNCEmu
             VALU.Add(Blaze.TdfInteger.Create("DCTX", reas));
             Result.Add(Blaze.TdfUnion.Create("REAS", 0, Blaze.TdfStruct.Create("VALU", VALU)));
 
-
             return Result;
         }
     }

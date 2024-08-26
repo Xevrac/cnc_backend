@@ -19,7 +19,7 @@ namespace CNCEmu
             PDAT.Add(Blaze.TdfInteger.Create("EXID", pi.userId));
             PDAT.Add(Blaze.TdfInteger.Create("GID\0", pi.game.id));
             PDAT.Add(Blaze.TdfInteger.Create("LOC\0", pi.loc));
-            PDAT.Add(Blaze.TdfString.Create("NAME", "Xevrac"));
+            PDAT.Add(Blaze.TdfString.Create("NAME", pi.profile.name));
             PDAT.Add(Blaze.TdfInteger.Create("PID\0", pi.userId));
             PDAT.Add(BlazeHelper.CreateNETFieldUnion(pi, "PNET"));
             PDAT.Add(Blaze.TdfInteger.Create("SID\0", pi.slot));

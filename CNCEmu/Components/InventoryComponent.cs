@@ -39,13 +39,11 @@ namespace CNCEmu
         public static void GetTemplate(Blaze.Packet p, PlayerInfo pi, NetworkStream ns)
         {
             List<Blaze.Tdf> Result = new List<Blaze.Tdf>();
-            List<string> t = Helper.ConvertStringList("{aek971_acog} {aek971_eotech}"); //Add Items... Not finish... !!
+            List<string> t = Helper.ConvertStringList("{aek971_acog} {aek971_eotech}");
             Result.Add(Blaze.TdfList.Create("ILST", 1, t.Count, t));
             byte[] buff = Blaze.CreatePacket(p.Component, p.Command, 0, 0x1000, p.ID, Result);
             ns.Write(buff, 0, buff.Length);
             ns.Flush();
         }
-
-
     }
 }

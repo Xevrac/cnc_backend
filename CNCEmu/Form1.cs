@@ -170,19 +170,31 @@ namespace CNCEmu
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int n = listBox1.SelectedIndex;
-            if (n == -1)
+            if (n == -1 || n >= packets.Count)
                 return;
+
             Blaze.Packet p;
+
             lock (_sync)
             {
+                if (packets == null || n >= packets.Count)
+                    return;
+
                 p = packets[n];
             }
+
             tv1.Nodes.Clear();
             inlistcount = 0;
             inlist = new List<Blaze.Tdf>();
-            List<Blaze.Tdf> Fields = Blaze.ReadPacketContent(p);
-            foreach (Blaze.Tdf tdf in Fields)
-            tv1.Nodes.Add(TdfToTree(tdf));
+
+            if (p != null)
+            {
+                List<Blaze.Tdf> Fields = Blaze.ReadPacketContent(p);
+                foreach (Blaze.Tdf tdf in Fields)
+                {
+                    tv1.Nodes.Add(TdfToTree(tdf));
+                }
+            }
         }
 
         public byte[] FileToByteArray(string fileName)
@@ -524,6 +536,21 @@ namespace CNCEmu
         private void SIAbout_Click(object sender, EventArgs e)
         {
             Utils.OpenUrl("https://github.com/Xevrac/cnc_backend/wiki/About");
+        }
+
+        public void DeletePackets()
+        {
+            string[] files = Directory.GetFiles("logs\\packets\\", "*.bin");
+            foreach (string file in files)
+            {
+                File.Delete(file);
+            }
+
+        }
+
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            DeletePackets();
         }
     }
 }

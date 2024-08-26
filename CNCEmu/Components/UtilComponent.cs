@@ -82,12 +82,12 @@ namespace CNCEmu
             Blaze.TdfInteger TYPE = (Blaze.TdfInteger)CDAT.Values[3];
             pi.isServer = TYPE.Value != 0;
 
-            //if (pi.isServer)  //Make as a Server !
-            //{
+            if (pi.isServer)  //Make as a Server !
+            {
                 pi.game = new GameInfo();
-                //pi.profile = Profiles.Create("Xevrac", 1);
-                //pi.userId = 1;
-            //}
+                pi.profile = Profiles.Create("rts.server", 999, "rts.server.pc@ea.com");
+                pi.userId = 999;
+            }
 
             Blaze.TdfStruct CINF = (Blaze.TdfStruct)input[1];
             Blaze.TdfString CVER = (Blaze.TdfString)CINF.Values[5];
@@ -171,7 +171,7 @@ namespace CNCEmu
             QOSS.Add(Blaze.TdfInteger.Create("TIME", utime));
 
             Result.Add(Blaze.TdfStruct.Create("QOSS", QOSS));
-            Result.Add(Blaze.TdfString.Create("RSRC", "302123")); 
+            Result.Add(Blaze.TdfString.Create("RSRC", "302123"));
             Result.Add(Blaze.TdfString.Create("SVER", "Blaze 13.3.1.8.0 (CL# 1148269)")); // Blaze Server Version 13.15.08.0 (CL# 9442625)
             byte[] buff = Blaze.CreatePacket(p.Component, p.Command, 0, 0x1000, p.ID, Result);
 
@@ -206,7 +206,7 @@ namespace CNCEmu
             List<Blaze.Tdf> TICKList = new List<Blaze.Tdf>();
             TICKList.Add(Blaze.TdfString.Create("ADRS", "127.0.0.1")); //ticker.ea.com
             TICKList.Add(Blaze.TdfInteger.Create("PORT", 8999));
-            TICKList.Add(Blaze.TdfString.Create("SKEY", pi.userId + ",127.0.0.1:80,battlefield-assault-pc,10,50,50,50,50,0,0"));
+            TICKList.Add(Blaze.TdfString.Create("SKEY", pi.userId + ",127.0.0.1:80,rts-client-pc,10,50,50,50,50,0,0"));
             Result.Add(Blaze.TdfStruct.Create("TICK", TICKList));
             List<Blaze.Tdf> UROPList = new List<Blaze.Tdf>();
             UROPList.Add(Blaze.TdfInteger.Create("TMOP", 1));

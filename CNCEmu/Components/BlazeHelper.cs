@@ -34,7 +34,7 @@ namespace CNCEmu
             result.Add(Blaze.TdfInteger.Create("EXID", pi.userId));
             result.Add(Blaze.TdfInteger.Create("GID\0", pi.game.id));
             result.Add(Blaze.TdfInteger.Create("LOC\0", pi.loc));
-            result.Add(Blaze.TdfString.Create("NAME", "Xevrac"));
+            result.Add(Blaze.TdfString.Create("NAME", pi.profile.name));
             result.Add(Blaze.TdfInteger.Create("PID\0", pi.userId));
             result.Add(BlazeHelper.CreateNETFieldUnion(pi, "PNET"));
             result.Add(Blaze.TdfInteger.Create("SID\0", pi.slot));
@@ -105,7 +105,7 @@ namespace CNCEmu
             USER.Add(Blaze.TdfInteger.Create("ALOC", pi.loc));
             USER.Add(Blaze.TdfInteger.Create("EXID\0", pi.userId));
             USER.Add(Blaze.TdfInteger.Create("ID\0\0", pi.userId));
-            USER.Add(Blaze.TdfString.Create("NAME", "Xevrac"));
+            USER.Add(Blaze.TdfString.Create("NAME", pi.profile.name));
             return Blaze.TdfStruct.Create("USER", USER);
         }
 

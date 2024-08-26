@@ -12,6 +12,7 @@ namespace CNCEmu
         public string _raw;
         public string name;
         public long id;
+        public string mail;
 
         public static Profile Load(string filename)
         {
@@ -29,7 +30,10 @@ namespace CNCEmu
                         p.name = parts[1].Trim();
                         break;
                     case "id":
-                        p.id = Convert.ToInt64(parts[1].Trim()); // Use Convert.ToInt64 to handle long ID
+                        p.id = Convert.ToInt32(parts[1].Trim());
+                        break;
+                    case "mail":
+                        p.mail = parts[1].Trim();
                         break;
                 }
             }
@@ -42,7 +46,8 @@ namespace CNCEmu
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("ID = " + id + ", ");
-            sb.Append("Name = " + name);
+            sb.Append("Name = " + name + ", ");
+            sb.Append("Mail = " + mail);
             return sb.ToString();
         }
     }
@@ -72,17 +77,17 @@ namespace CNCEmu
             return "backend\\profiles\\" + id.ToString("X8") + "_profile.txt";
         }
 
-        public static Profile Create(string name)
+        public static Profile Create(string name, string mail)
         {
             long id = 1000;
             while (File.Exists(getProfilePath(id)))
                 id++;
-            return Create(name, id);
+            return Create(name, id, mail);
         }
 
-        public static Profile Create(string name, long id)
+        public static Profile Create(string name, long id, string mail)
         {
-            string profileContent = "name=" + name + "\nid=" + id;
+            string profileContent = "name=" + name + "\nid=" + id + "\nmail=" + mail;
             string filename = getProfilePath(id);
             File.WriteAllText(filename, profileContent, Encoding.Unicode);
             return Profile.Load(filename);
