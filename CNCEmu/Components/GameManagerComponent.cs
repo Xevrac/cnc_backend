@@ -61,7 +61,7 @@ namespace CNCEmu
                 case 0x19:
                     resetDedicatedServer(p, pi, ns);
                     break;
-                case 100:
+                case 0x64:
                     getGameListSnapshot(p, pi, ns);
                     break;
                 default:
@@ -369,7 +369,7 @@ namespace CNCEmu
             result.Add(Blaze.TdfInteger.Create("NGD", 0));
 
             // Create response packet
-            byte[] buff = Blaze.CreatePacket(p.Component, 100, 0, 0x1000, p.ID, result);
+            byte[] buff = Blaze.CreatePacket(p.Component, p.Command, 0, 0x1000, p.ID, result);
             Logger.LogPacket("getGameListSnapshot", Convert.ToInt32(pi.userId), buff);
             ns.Write(buff, 0, buff.Length);
             ns.Flush();
