@@ -1,15 +1,10 @@
-﻿using System;
-using System.IO;
+﻿using BlazeLibWV;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Diagnostics;
-using System.Linq;
+using System.IO;
+using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using BlazeLibWV;
 
 namespace CNCEmu
 {
@@ -57,7 +52,10 @@ namespace CNCEmu
                     break;
             }
 
-    
+            LabelVersion.Text = Assembly
+                .GetExecutingAssembly()
+                .GetCustomAttribute<AssemblyFileVersionAttribute>()
+                .Version;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

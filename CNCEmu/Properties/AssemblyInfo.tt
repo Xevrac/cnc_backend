@@ -1,0 +1,41 @@
+<#@ template language="C#" #>
+<#@ output extension=".cs" #>
+using System.Reflection;
+using System.Runtime.InteropServices;
+
+// General Information about an assembly is controlled through the following
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: AssemblyTitle("CNCEmu")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("CNCEmu")]
+[assembly: AssemblyCopyright("Copyright ©  2024")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+
+// Setting ComVisible to false makes the types in this assembly not visible
+// to COM components.  If you need to access a type in this assembly from
+// COM, set the ComVisible attribute to true on that type.
+[assembly: ComVisible(false)]
+
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("1aa2df60-d199-4c55-bbdd-0549e99c8949")]
+
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version
+//      Build Number
+//      Revision
+//
+[assembly: AssemblyVersion("<#= Year % 100 #>.<#= Month #>.<#= DayHour #>.<#= MinuteSecond #>")]
+[assembly: AssemblyFileVersion("<#= Year % 100 #>.<#= Month #>.<#= DayHour #>.<#= MinuteSecond #>")]
+
+<#+
+int Year = DateTime.UtcNow.Year;
+int Month = DateTime.UtcNow.Month;
+int DayHour = DateTime.UtcNow.Day * 100 + DateTime.UtcNow.Hour;
+int MinuteSecond = DateTime.UtcNow.Minute * 100 + DateTime.UtcNow.Second;
+#>
